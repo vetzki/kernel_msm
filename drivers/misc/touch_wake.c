@@ -78,8 +78,10 @@ EXPORT_SYMBOL(touchwake_is_enabled);
 
 static void touchwake_early_suspend(struct early_suspend *h)
 {
-	if (!touchwake_enabled)
+	if (!touchwake_enabled) {
+		touch_disabled = true;
 		goto out;
+	}
 
 	if (timed_out) {
 		wake_lock(&touchwake_wake_lock);
@@ -95,8 +97,10 @@ out:
 
 static void touchwake_late_resume(struct early_suspend *h)
 {
-	if (!touchwake_enabled)
+	if (!touchwake_enabled) {
+		touch_disabled = false;
 		goto out;
+	}
 
 	cancel_delayed_work(&touchoff_work);
 	flush_scheduled_work();
