@@ -25,6 +25,7 @@
 #include "mipi_lgit.h"
 #include "mdp4.h"
 
+static DEFINE_MUTEX(color_lock);
 static struct msm_panel_common_pdata *mipi_lgit_pdata;
 
 static struct dsi_buf lgit_tx_buf;
@@ -226,15 +227,11 @@ static void mipi_lgit_set_backlight_board(struct msm_fb_data_type *mfd)
 	mipi_lgit_pdata->backlight_level(level, 0, 0);
 }
 
-struct syscore_ops panel_syscore_ops = {
-	.shutdown = mipi_lgit_lcd_shutdown,
-};
-
 void update_vals(int array_pos)
 {
 	int val = 0;
 	int ret = 0;
-	
+
 	if (array_pos == 1)
 		val = get_greys();
 	else if (array_pos == 2)
@@ -259,8 +256,9 @@ void update_vals(int array_pos)
 	new_color_vals[8].payload[array_pos] = val;
 	new_color_vals[9].payload[array_pos] = val;
 	new_color_vals[10].payload[array_pos] = val;
-	
-	msleep(10);
+
+	mutex_lock(&color_lock);
+	msleep(20);
 	MIPI_OUTP(MIPI_DSI_BASE + 0x38, 0x10000000);
 	ret = mipi_dsi_cmds_tx(&lgit_tx_buf,
 			new_color_vals,
@@ -268,7 +266,12 @@ void update_vals(int array_pos)
 	MIPI_OUTP(MIPI_DSI_BASE + 0x38, 0x14000000);
 	if (ret < 0)
 		pr_err("%s: failed to transmit power_on_set_1 cmds\n", __func__);
+	mutex_unlock(&color_lock);
 }
+
+struct syscore_ops panel_syscore_ops = {
+	.shutdown = mipi_lgit_lcd_shutdown,
+};
 
 static int mipi_lgit_lcd_probe(struct platform_device *pdev)
 {
