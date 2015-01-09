@@ -31,23 +31,23 @@ unsigned int blue_whites_val = 48;
 /*
  * Grays for RED, GREEN and BLUE
  */
-unsigned int red_greys_val = 114;
-unsigned int green_greys_val = 114;
-unsigned int blue_greys_val = 114;
+unsigned int red_greys_val = 64;
+unsigned int green_greys_val = 64;
+unsigned int blue_greys_val = 32;
 
 /*
  * Mids for RED, GREEN and BLUE
  */
-unsigned int red_mids_val = 21;
-unsigned int green_mids_val = 21;
-unsigned int blue_mids_val = 21;
+unsigned int red_mids_val = 68;
+unsigned int green_mids_val = 68;
+unsigned int blue_mids_val = 35;
 
 /*
  * Blacks for RED, GREEN and BLUE
  */
 unsigned int red_blacks_val = 118;
 unsigned int green_blacks_val = 118;
-unsigned int blue_blacks_val = 118;
+unsigned int blue_blacks_val = 116;
 
 /*
  * These values are common to the RGB spectrum in this implementation
