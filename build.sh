@@ -1,13 +1,13 @@
 #!/bin/bash
 
 # Bei ARCH
-Env=`echo $PS1|cut -f1 -d \[`
-if [ "$Env" != "(venv)" ]
-then echo "Setup virtualenv"
-virtualenv2 venv
-source venv/bin/activate
-else echo "Already in virtualenv python2"
-fi
+#Env=`echo $PS1|cut -f1 -d \[`
+#if [ "$Env" != "(venv)" ]
+#then echo "Setup virtualenv"
+#virtualenv2 venv
+#source venv/bin/activate
+#else echo "Already in virtualenv python2"
+#fi
 #
 
 
