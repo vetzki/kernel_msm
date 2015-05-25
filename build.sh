@@ -17,6 +17,7 @@ export PATH=$PATH:/media/Datengrab/home/mv/android/Projekt/AOSP-L/prebuilts/gcc/
 export CROSS_COMPILE=/media/Datengrab/home/mv/android/Projekt/AOSP-L/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9/bin/arm-linux-androideabi-
 export ARCH=arm
 export SUBARCH=arm
+export INSTALL_MOD_PATH=/system
 
     read -p ".config neu?: " ANSWER
 		case $ANSWER in
