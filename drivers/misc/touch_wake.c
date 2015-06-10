@@ -115,7 +115,6 @@ static void disable_touchwake(void)
 	if (wake_lock_active(&touchwake_wake_lock)) {
 		touchwake_disable_touch();
 		wake_unlock(&touchwake_wake_lock);
-		led_trigger_event(&touchwake_led_trigger, LED_OFF);
 	}
 
 	touchwake_enabled = false;
