@@ -14,7 +14,7 @@
 #BUILD_VER="mv-L"
 #export LOCALVERSION="_"`echo $BUILD_VER`
 export PATH=$PATH:/media/Datengrab/home/mv/android/Projekt/AOSP-L/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9/bin
-export CROSS_COMPILE=/media/Datengrab/home/mv/android/Projekt/AOSP-L/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9/bin/arm-linux-androideabi-
+export CROSS_COMPILE=arm-linux-androideabi-
 export ARCH=arm
 export SUBARCH=arm
 export INSTALL_MOD_PATH=/system
