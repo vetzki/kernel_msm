@@ -84,3 +84,6 @@ GTAGS
 *.orig
 *~
 \#*#
+/make_zip.sh
+/build.sh
+venv/*
